@@ -10,7 +10,6 @@ public class Bishop extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        // check that we can move to position and can't moved out from board or in not empty position
         if (line != toLine && column != toColumn &&
                 getMax(line, toLine) - getMin(line, toLine) == getMax(column, toColumn) - getMin(column, toColumn) &&
                 checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn) &&
@@ -20,7 +19,6 @@ public class Bishop extends ChessPiece {
                 return false;
             }
 
-            // from up-left to down-right
             if ((column == getMin(column, toColumn) && line == getMax(line, toLine)) ||
                     (toColumn == getMin(column, toColumn) && toLine == getMax(line, toLine))) {
                 int fromL = getMax(line, toLine);
@@ -39,7 +37,6 @@ public class Bishop extends ChessPiece {
                 }
                 return true;
             } else {
-                // from down-left to up-right
                 int fromL = getMin(line, toLine);
                 int fromC = getMin(column, toColumn);
                 int toL = getMax(line, toLine);
